@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-12 10:44:15
- # @modify date 2019-03-13 21:48:23
+ # @modify date 2019-03-13 23:29:56
  # @desc [File for preprocessing the "Liar, Liar Pants on Fire" dataset.]
 """
 
@@ -117,6 +117,25 @@ def create_distribution(dataset, dataset_name):
     plt.show()
 
 
+def check_dataset_quality(dataset, dataset_name):
+    """Function to check the quality of the dataset i.e. if there are 
+    missing values and cleaning them by removing those entries.
+
+    Parameters:
+    -----------
+    dataset: pandas dataframe
+        Dataset whose quality is to be checked.
+    dataset_name: string 
+        Name of the dataset.
+    """
+    print('Checking the quality of {}'.format(dataset_name))
+    print(dataset.isnull().sum())
+    print()
+    number_of_nulls = dataset.isnull().sum().sum()
+    if number_of_nulls > 0:
+        dataset.dropna()
+
+
 # File paths of the dataset to be read
 train_path = './datasets/train.tsv'
 valid_path = './datasets/valid.tsv'
@@ -138,6 +157,11 @@ save_path = './datasets/'
 save_to_csv(train_data, save_path, 'train.csv')
 save_to_csv(valid_data, save_path, 'valid.csv')
 save_to_csv(test_data, save_path, 'test.csv')
+
+# Checking the quality of the dataset
+check_dataset_quality(train_data, 'Train dataset')
+check_dataset_quality(valid_data, 'Valid dataset')
+check_dataset_quality(test_data, 'Test dataset')
 
 # Displaying the stats of the datasets
 show_dataset_stats(train_data, 'Train dataset')
