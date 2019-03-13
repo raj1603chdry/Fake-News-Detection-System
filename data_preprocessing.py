@@ -10,6 +10,11 @@
 # Importing the libraries
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+import warnings
+warnings.filterwarnings('ignore')
 
 
 # Helper functions
@@ -75,6 +80,43 @@ def save_to_csv(dataset, file_path, file_name):
     dataset.to_csv(complete_file_path_with_name, index=False)
 
 
+def show_dataset_stats(dataset, dataset_name):
+    """Function that shows the size of the dataset alongwith
+    5 sample columns.
+
+    Parameters:
+    -----------
+    dataset: pandas dataframe
+        Dataset whose stats are to be shown.
+    dataset_name: string
+        The name of the dataset.
+    """
+    print('Statistics of {}'.format(dataset_name))
+    print('Shape: {}'.format(dataset.shape))
+    print('Few samples from dataset:')
+    print(dataset.sample(5))
+    print()
+
+
+def create_distribution(dataset, dataset_name):
+    """Function to show the distribution of labels in the dataset and
+    save the plot in the images folder with proper name.
+
+    Parameters:
+    -----------
+    dataset: pandas dataframe
+        Dataset whose distribution is to be displayed.
+    dataset_name: string
+        The name of the dataset.
+    """
+    if not os.path.isdir('./figures'):
+        os.makedirs('figures')
+    sns.countplot(x='label', data=dataset)
+    plt.title('Label distribution of '+dataset_name)
+    plt.savefig('./figures/label_distribution_'+dataset_name)
+    plt.show()
+
+
 # File paths of the dataset to be read
 train_path = './datasets/train.tsv'
 valid_path = './datasets/valid.tsv'
@@ -96,3 +138,13 @@ save_path = './datasets/'
 save_to_csv(train_data, save_path, 'train.csv')
 save_to_csv(valid_data, save_path, 'valid.csv')
 save_to_csv(test_data, save_path, 'test.csv')
+
+# Displaying the stats of the datasets
+show_dataset_stats(train_data, 'Train dataset')
+show_dataset_stats(test_data, 'Test dataset')
+show_dataset_stats(valid_data, 'Valid dataset')
+
+# Creating distributions of datasets
+create_distribution(train_data, 'Train_dataset')
+create_distribution(valid_data, 'Valid_dataset')
+create_distribution(test_data, 'Test_dataset')
