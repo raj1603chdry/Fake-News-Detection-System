@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-12 10:44:15
- # @modify date 2019-03-14 23:59:08
+ # @modify date 2019-03-15 19:01:56
  # @desc [File for preprocessing the "Liar, Liar Pants on Fire" dataset.]
 """
 
@@ -17,7 +17,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 from wordcloud import WordCloud, STOPWORDS
-
 
 # Helper functions
 def read_tsv(file_path):
@@ -156,57 +155,6 @@ def check_dataset_quality(dataset, dataset_name):
         dataset.dropna()
 
 
-def plot_save_wordcloud(dataset, title):
-    """Function to plot the wordcloud of the entries of the dataset and
-    save it in the figures folder.
-
-    Parameters:
-    -----------
-    dataset: pandas dataframe
-        The dataset containing the sentences.
-    title: string
-        Title of wordcloud.
-    """
-    if not os.path.isdir('./figures'):
-        os.makedirs('figures')
-
-    text = dataset['news'].values
-    wordcloud = WordCloud(width=3000, height=2000, background_color='white',
-                          stopwords=STOPWORDS).generate(str(text))
-    plt.imshow(wordcloud)
-    plt.axis('off')
-    plt.title('{}'.format(title))
-    title = title.replace(' ', '_')
-    plt.savefig('./figures/word_cloud_'+title)
-    plt.show()
-
-
-def create_word_cloud(dataset, dataset_name):
-    """Function to create the wordcloud of the complete dataset as well as
-    for only the true labels as well as for false labels of the dataset.
-
-    Parameters:
-    -----------
-    dataset: pandas dataframe
-        The dataset whose wordcloud is to be formed.
-    dataset_name: string
-        The name of the dataset.
-    """
-
-    title = 'The wordcloud of the complete '+dataset_name
-    plot_save_wordcloud(dataset, title)
-
-    # Plotting the wordcloud for the true labels only
-    true_dataset = dataset[dataset['label'] == 'true']
-    title = 'The wordcloud of the true labels of '+dataset_name
-    plot_save_wordcloud(true_dataset, title)
-
-    # Plotting the wordcloud for the false labels only
-    false_dataset = dataset[dataset['label'] == 'false']
-    title = 'The wordcloud of the false labels of '+dataset_name
-    plot_save_wordcloud(false_dataset, title)
-
-
 # File paths of the dataset to be read
 train_path = './datasets/train.tsv'
 valid_path = './datasets/valid.tsv'
@@ -248,8 +196,3 @@ create_distribution(test_data, 'Test_dataset')
 save_lowercase(train_data, save_path, 'train_lower.csv')
 save_lowercase(valid_data, save_path, 'valid_lower.csv')
 save_lowercase(test_data, save_path, 'test_lower.csv')
-
-# Creating the wordclouds of the datasets
-create_word_cloud(train_data, 'Train dataset')
-create_word_cloud(valid_data, 'Valid dataset')
-create_word_cloud(test_data, 'Test dataset')
