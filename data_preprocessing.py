@@ -100,6 +100,24 @@ def show_dataset_stats(dataset, dataset_name):
     print()
 
 
+def save_lowercase(dataset, file_path, file_name):
+    """Function to convert all the string in the dataset into lowercase
+    and save it in csv format.
+
+    Parameters:
+    -----------
+    dataset: pandas dataframe
+        Dataset to be saved in lowercase.
+    file_path: string
+        The path where the dataset is to be stored.
+    file_name: string
+        The name of the saved file.
+    """
+    dataset['news'] = dataset['news'].str.lower()
+    complete_file_path_with_name = file_path+file_name
+    dataset.to_csv(complete_file_path_with_name, index=False)
+
+
 def create_distribution(dataset, dataset_name):
     """Function to show the distribution of labels in the dataset and
     save the plot in the images folder with proper name.
@@ -225,6 +243,11 @@ show_dataset_stats(valid_data, 'Valid dataset')
 create_distribution(train_data, 'Train_dataset')
 create_distribution(valid_data, 'Valid_dataset')
 create_distribution(test_data, 'Test_dataset')
+
+# Saving the datasets with all string in lowercase
+save_lowercase(train_data, save_path, 'train_lower.csv')
+save_lowercase(valid_data, save_path, 'valid_lower.csv')
+save_lowercase(test_data, save_path, 'test_lower.csv')
 
 # Creating the wordclouds of the datasets
 create_word_cloud(train_data, 'Train dataset')
