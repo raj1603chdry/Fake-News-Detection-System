@@ -34,7 +34,9 @@ def make_prediction(user_input):
 
     # Making prediction on the user_input and displaying the result
     prediction = final_model.predict([user_input])
+    prediction_probability = final_model.predict_proba([user_input])
     print('Predicted label:\t{}'.format(prediction))
+    print('Truth probability:\t{}'.format(prediction_probability[0][1]))
 
 
 if __name__ == '__main__':
