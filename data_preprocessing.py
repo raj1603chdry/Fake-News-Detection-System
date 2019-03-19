@@ -117,6 +117,24 @@ def save_lowercase(dataset, file_path, file_name):
     dataset.to_csv(complete_file_path_with_name, index=False)
 
 
+def show_label_distribution(dataset, dataset_name):
+    """Function to show the label distribution in the dataset.
+
+    Parameters:
+    -----------
+    dataset: pandas dataframe
+        The dataset whose label distribution is to be shown.
+    dataset_name: string
+        The name of the dataset.
+    """
+    print('Label distribution {}:'.format(dataset_name))
+    distribution = dataset['label'].value_counts(normalize=True).reset_index()
+    distribution['label'] = distribution['label']*100
+    for _, row in distribution.iterrows():
+        print('{}\t{:.2f}%'.format(row['index'], row['label']))
+    print()
+
+
 def create_distribution(dataset, dataset_name):
     """Function to show the distribution of labels in the dataset and
     save the plot in the images folder with proper name.
@@ -186,6 +204,11 @@ save_to_csv(test_data, save_path, 'test.csv')
 show_dataset_stats(train_data, 'Train dataset')
 show_dataset_stats(test_data, 'Test dataset')
 show_dataset_stats(valid_data, 'Valid dataset')
+
+# Display the label distribution of the datasets
+show_label_distribution(train_data, 'Train dataset')
+show_label_distribution(valid_data, 'Valid dataset')
+show_label_distribution(test_data, 'Test dataset')
 
 # Creating distributions of datasets
 create_distribution(train_data, 'Train_dataset')
