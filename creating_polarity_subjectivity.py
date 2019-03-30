@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-29 20:44:56
- # @modify date 2019-03-30 01:27:20
+ # @modify date 2019-03-30 17:14:01
  # @desc [Script to find polarity and subjectivity of the news statements.]
 """
 
@@ -41,14 +41,17 @@ def generate_polarity_subjectivity(dataset):
     -----------
     dataset: pandas dataframe
         Dataset containing the news statements.
+    
+    Returns:
+    --------
+    df: pandas dataframe
+        Contains the polarity and subjectivity of the news in the dataset.
     """
-    df = pd.DataFrame(columns = ['polarity', 'subjectivity'])
-    for _, row in dataset.iterrows():
-        polarity, subjectivity = sentiment(row['news'])
-        df1 = pd.DataFrame([[round(polarity, 3), round(subjectivity, 3)]],
-                            columns = ['polarity', 'subjectivity'])
-        df = df.append(df1)
-    return df.reset_index(drop=True)
+    df = dataset['news'].apply(lambda s: pd.Series({
+        'polarity': round(sentiment(s)[0], 3),
+        'subjectivity': round(sentiment(s)[1], 3)
+    }))
+    return df
 
 
 # File paths of the dataset to be read
