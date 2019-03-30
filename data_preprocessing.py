@@ -6,17 +6,18 @@
  # @desc [File for preprocessing the "Liar, Liar Pants on Fire" dataset.]
 """
 
-
 # Importing the libraries
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import os
 import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from wordcloud import STOPWORDS, WordCloud
+
 warnings.filterwarnings('ignore')
 
-from wordcloud import WordCloud, STOPWORDS
 
 # Helper functions
 def read_tsv(file_path):

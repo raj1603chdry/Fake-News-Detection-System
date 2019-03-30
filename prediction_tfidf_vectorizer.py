@@ -6,7 +6,6 @@
  # @desc [File for predicting the label of the news entered by the user.]
 """
 
-
 # Importing the libraries
 import os
 import pickle

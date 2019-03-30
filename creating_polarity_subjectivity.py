@@ -6,15 +6,16 @@
  # @desc [Script to find polarity and subjectivity of the news statements.]
 """
 
-
 # Importing the libraries
-import pandas as pd
-import numpy as np
 import os
 import warnings
-warnings.filterwarnings('ignore')
+
+import pandas as pd
+import numpy as np
 
 from pattern.en import sentiment
+
+warnings.filterwarnings('ignore')
 
 
 def save_to_csv(dataset, file_path, file_name):
