@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-18 01:26:48
- # @modify date 2019-03-18 01:26:48
+ # @modify date 2019-04-09 01:41:53
  # @desc [File for predicting the label of the news entered by the user.]
 """
 
@@ -27,7 +27,7 @@ def make_prediction(user_input):
     """
     # Loading the desired model
     final_model = pickle.load(
-        open(os.path.join('./models', 
+        open(os.path.join('../models', 
             'voting_classifier_count_vectorizer.pkl'), 'rb'), 
     )
 

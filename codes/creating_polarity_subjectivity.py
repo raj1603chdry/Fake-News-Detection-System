@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-29 20:44:56
- # @modify date 2019-03-30 17:14:01
+ # @modify date 2019-04-09 01:41:15
  # @desc [Script to find polarity and subjectivity of the news statements.]
 """
 
@@ -56,9 +56,9 @@ def generate_polarity_subjectivity(dataset):
 
 
 # File paths of the dataset to be read
-train_path = './datasets/train.csv'
-valid_path = './datasets/valid.csv'
-test_path = './datasets/test.csv'
+train_path = '../datasets/train.csv'
+valid_path = '../datasets/valid.csv'
+test_path = '../datasets/test.csv'
 
 # Importing the datasets
 train_data = pd.read_csv(train_path)
@@ -71,7 +71,7 @@ valid_pol_sub = generate_polarity_subjectivity(valid_data)
 test_pol_sub = generate_polarity_subjectivity(test_data)
 
 # Path for saving the files
-save_path = './datasets/'
+save_path = '../datasets/'
 
 # Saving the datasets in csv format
 save_to_csv(train_pol_sub, save_path, 'train_pol_sub.csv')
