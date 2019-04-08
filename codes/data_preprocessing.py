@@ -2,7 +2,7 @@
  # @author rajchoudhary
  # @email raj.choudhary1603@gmail.com
  # @create date 2019-03-12 10:44:15
- # @modify date 2019-03-19 16:04:35
+ # @modify date 2019-04-09 01:31:48
  # @desc [File for preprocessing the "Liar, Liar Pants on Fire" dataset.]
 """
 
@@ -175,9 +175,9 @@ def check_dataset_quality(dataset, dataset_name):
 
 
 # File paths of the dataset to be read
-train_path = './datasets/train.tsv'
-valid_path = './datasets/valid.tsv'
-test_path = './datasets/test.tsv'
+train_path = '../../datasets/train.tsv'
+valid_path = '../../datasets/valid.tsv'
+test_path = '../../datasets/test.tsv'
 
 train_data = read_tsv(train_path)
 valid_data = read_tsv(valid_path)
@@ -189,7 +189,7 @@ valid_data = preprocess_dataset(valid_data)
 test_data = preprocess_dataset(test_data)
 
 # Path for saving the files
-save_path = './datasets/'
+save_path = '../../datasets/'
 
 # Checking the quality of the dataset
 check_dataset_quality(train_data, 'Train dataset')
