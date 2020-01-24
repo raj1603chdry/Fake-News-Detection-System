@@ -86,6 +86,3 @@ __Proposed system steps:__
 * __figures:__ This folder contains the visualisations generated.
 * __images:__ This folder contains the images used for creating the README file.
 * __models:__ This folder contains the pickle file of the 2 final models created.
-
-### Files inside the code directory:
-
