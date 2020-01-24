@@ -49,7 +49,7 @@ __Proposed system steps:__
     Models | Accuracy | F1-score | Precision | Recall
     ---- | ---- | ---- | ---- | ----
     Logistic Regression | 56.353% | 72.084% | 56.353% |100.00%
-    Näive Bayes | 62.036% | 73.262% | 60.737% | 92.296%
+    Naïve Bayes | 62.036% | 73.262% | 60.737% | 92.296%
     SVM Classifier | 56.669% | 72.117% | 56.573% | 99.439%
     Random Forest Classifier | 56.511% | 72.157% | 56.442% | 100.00%
     Voting Classifier | 60.457% | 72.933% | 59.336% | 94.537%
@@ -69,4 +69,23 @@ __Proposed system steps:__
     From the results of the models on the different evaluation metrics when TfidfVectorizer is used as the feature extraction model, the best performing models is the Naïve Bayes model with a f1-score of 73.290% whereas the model with the least f1-score is Logistic Regression with that of 71.437%. From other evaluation metrics, we find that as compared to CountVectorizer, the TfidfVectorizer used by models perform better in terms of precision and accuracy but does not do so well in terms of recall.
 
     Thus, from these findings, we can conclude that in terms of feature extraction TfidfVectorizer outperforms CountVectorizer.
+
+## Repository Structure:
+
+```bash
+.
+├── codes
+├── datasets
+├── figures
+├── images
+└── models
+```
+
+* __codes:__ This folder contains all the Python scripts as well as the Jupyter notebook relevant to the project.
+* __datasets:__ This folder contains the initial datasets as well as the intermediate datasets created from the different processing steps.
+* __figures:__ This folder contains the visualisations generated.
+* __images:__ This folder contains the images used for creating the README file.
+* __models:__ This folder contains the pickle file of the 2 final models created.
+
+### Files inside the code directory:
 
