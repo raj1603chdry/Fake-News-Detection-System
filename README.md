@@ -42,3 +42,31 @@ __Proposed system steps:__
 
     __Voting Classifier:__ The trained and tuned models were ensembled into a Voting Classifier that used all of them as the base estimator. When a new test data is passed to the Voting Classifier, it makes all the models under it to predict the label for the sample. After receiving the labels from all the models, using the soft voting measure, it predicts the final label of the test sample.
 
+## Results and Discussions
+
+1. __For Count Vectorizer:__
+
+    Models | Accuracy | F1-score | Precision | Recall
+    ---- | ---- | ---- | ---- | ----
+    Logistic Regression | 56.353% | 72.084% | 56.353% |100.00%
+    Näive Bayes | 62.036% | 73.262% | 60.737% | 92.296%
+    SVM Classifier | 56.669% | 72.117% | 56.573% | 99.439%
+    Random Forest Classifier | 56.511% | 72.157% | 56.442% | 100.00%
+    Voting Classifier | 60.457% | 72.933% | 59.336% | 94.537%
+
+    From the results of the models on the different evaluation metrics when CountVectorizer is used as the feature extraction model, the best performing models is the Naïve Bayes model with a f1-score of 73.262% whereas the model with the least f1-score is SVM with that of 72.117%. From other evaluation metrics, we find that due to the small feature space of the headlines, all the models have recall more 92% whereas because of the same small space, the maximum precision achieved is 61%.
+
+2. __For TFIDF Vectorizer:__
+
+    Models | Accuracy | F1-score | Precision | Recall
+    ---- | ---- | ---- | ---- | ----
+    LOGICAL REGRESSION | 63.141% | 71.437 % | 63.409 % | 81.792%
+    NAIVE BAYES | 60.536% | 73.290% | 59.240% | 96.078%
+    SVM  | 60.063% | 72.013% | 59.506% | 91.176%
+    RANDOM FOREST | 57.221% | 72.487% | 56.847% | 100.0%
+    VOTING CLASSIFIER | 62.273% | 72.369% | 61.614% | 87.675%
+
+    From the results of the models on the different evaluation metrics when TfidfVectorizer is used as the feature extraction model, the best performing models is the Naïve Bayes model with a f1-score of 73.290% whereas the model with the least f1-score is Logistic Regression with that of 71.437%. From other evaluation metrics, we find that as compared to CountVectorizer, the TfidfVectorizer used by models perform better in terms of precision and accuracy but does not do so well in terms of recall.
+
+    Thus, from these findings, we can conclude that in terms of feature extraction TfidfVectorizer outperforms CountVectorizer.
+
